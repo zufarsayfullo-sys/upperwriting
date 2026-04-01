@@ -34,11 +34,6 @@
   .screen-title{font-size:clamp(1rem,4vw,1.3rem);font-weight:700;margin-bottom:6px}
   .screen-sub{color:var(--muted);font-size:clamp(.8rem,3vw,.88rem);margin-bottom:22px}
 
-  input[type="text"]{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;color:var(--text);font-family:'Sora',sans-serif;font-size:16px;outline:none;transition:border-color .2s;-webkit-appearance:none}
-  input[type="text"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
-  .field-group{margin-bottom:16px}
-  .field-label{font-size:.72rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:7px;font-family:'JetBrains Mono',monospace}
-
   .btn{border:none;border-radius:12px;padding:clamp(14px,3.5vw,16px) clamp(16px,4vw,22px);font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(.9rem,3.5vw,1rem);cursor:pointer;transition:all .18s;min-height:54px;touch-action:manipulation;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
   .btn-primary{background:var(--primary);color:#fff;width:100%;margin-top:8px;box-shadow:0 4px 20px var(--primary-glow)}
   .btn-accent{background:var(--accent);color:#080c14;font-weight:700}
@@ -67,7 +62,6 @@
   .pw-timer.urgent{color:var(--danger);animation:blink .5s infinite}
   .pw-timer.done{color:var(--accent)}
   @keyframes blink{50%{opacity:.4}}
-  .pw-timer-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
   .pw-questions{display:flex;flex-direction:column;gap:10px;margin:20px 0}
   .pw-q-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:clamp(.82rem,3vw,.9rem);line-height:1.5;display:flex;gap:12px;align-items:flex-start}
   .pw-q-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);flex-shrink:0;margin-top:2px;font-weight:600}
@@ -117,7 +111,6 @@
   .result-circle{width:clamp(100px,26vw,124px);height:clamp(100px,26vw,124px);border-radius:50%;margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent);box-shadow:0 0 40px var(--accent-glow);background:rgba(6,214,160,.05)}
   .result-score{font-family:'JetBrains Mono',monospace;font-size:clamp(2rem,8vw,2.6rem);font-weight:600;color:var(--accent);line-height:1}
   .result-max{font-size:.68rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-  .result-name{font-size:clamp(1rem,4vw,1.2rem);font-weight:700;margin-bottom:4px}
   .result-topic{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;max-width:500px;margin:0 auto;line-height:1.4}
 
   .criteria-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,2vw,10px);margin-bottom:clamp(20px,5vw,28px)}
@@ -163,26 +156,14 @@
   <p>Upper-Intermediate · AI-Scored</p>
 </header>
 
-<!-- SCREEN 1: Name -->
-<div class="screen" id="name-screen">
-  <div class="screen-title">Welcome</div>
-  <div class="screen-sub">Enter your name to begin the writing exam</div>
-  <div class="field-group">
-    <div class="field-label">Full Name</div>
-    <input type="text" id="user-name" placeholder="e.g. Aliya Karimova" autocomplete="off" autocorrect="off" spellcheck="false">
-  </div>
-  <div class="error-box" id="name-error"></div>
-  <button class="btn btn-primary" onclick="showMenu()">Continue →</button>
-</div>
-
-<!-- SCREEN 2: Question selection -->
-<div class="screen hidden" id="menu-screen">
+<!-- SCREEN 1: Question selection -->
+<div class="screen" id="menu-screen">
   <div class="screen-title">Select Your Question</div>
   <div class="screen-sub">Choose the essay question assigned to you</div>
   <div class="q-grid" id="q-grid"></div>
 </div>
 
-<!-- SCREEN 3: Pair work (optional) -->
+<!-- SCREEN 2: Pair work (optional) -->
 <div class="screen hidden" id="pairwork-screen">
   <div class="pw-header">
     <div>
@@ -206,7 +187,7 @@
   </div>
 </div>
 
-<!-- SCREEN 4: Writing -->
+<!-- SCREEN 3: Writing -->
 <div class="screen hidden" id="exam-screen">
   <div class="exam-header">
     <div class="exam-badge" id="q-badge">Question 1</div>
@@ -216,7 +197,7 @@
 
   <div class="topic-box">
     <div class="topic-statement" id="topic-statement">—</div>
-    <div class="field-label" style="margin-bottom:10px;">In your essay, you should:</div>
+    <div class="field-label" style="margin-bottom:10px;font-size:.72rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;">In your essay, you should:</div>
     <ul class="topic-instructions" id="topic-instructions"></ul>
   </div>
 
@@ -237,7 +218,7 @@
   </div>
 </div>
 
-<!-- SCREEN 5: Loading -->
+<!-- SCREEN 4: Loading -->
 <div class="screen hidden" id="loading-screen">
   <div class="loading-wrap">
     <div class="spinner"></div>
@@ -246,8 +227,7 @@
   </div>
 </div>
 
-
-<!-- SCREEN 5b: AI Detected -->
+<!-- SCREEN 4b: AI Detected -->
 <div class="screen hidden" id="ai-screen">
   <div class="ai-detected-screen">
     <div class="ai-icon">🤖</div>
@@ -257,14 +237,14 @@
     <button class="btn btn-ghost" style="width:100%;margin-top:4px" onclick="goBackFromAI()">← Write Your Own Essay</button>
   </div>
 </div>
-<!-- SCREEN 6: Results -->
+
+<!-- SCREEN 5: Results -->
 <div class="screen hidden" id="result-screen">
   <div class="result-hero">
     <div class="result-circle">
       <div class="result-score" id="result-total">—</div>
       <div class="result-max">/ 15</div>
     </div>
-    <div class="result-name" id="result-name"></div>
     <div class="result-topic" id="result-topic"></div>
   </div>
 
@@ -331,7 +311,7 @@ const questions = [
 ];
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let userName = "", currentQ = null;
+let currentQ = null;
 let typedChars = 0, pastedChars = 0;
 let pwTimerInterval = null, pwSecondsLeft = 180;
 let essayTimerInterval = null, essaySecondsLeft = 720;
@@ -345,13 +325,8 @@ function fmt(s) {
   return `${m}:${sec.toString().padStart(2,'0')}`;
 }
 
-// ── Name screen ───────────────────────────────────────────────────────────────
-function showMenu() {
-  userName = document.getElementById('user-name').value.trim();
-  const err = document.getElementById('name-error');
-  if (!userName) { err.style.display='block'; err.textContent='Please enter your name.'; return; }
-  err.style.display = 'none';
-  document.getElementById('name-screen').classList.add('hidden');
+// ── Menu screen (now the first screen) ───────────────────────────────────────
+(function initMenu() {
   const grid = document.getElementById('q-grid');
   grid.innerHTML = '';
   questions.forEach(q => {
@@ -361,9 +336,7 @@ function showMenu() {
     card.onclick = () => goToPairWork(q);
     grid.appendChild(card);
   });
-  document.getElementById('menu-screen').classList.remove('hidden');
-}
-document.getElementById('user-name').addEventListener('keydown', e => { if (e.key==='Enter'){e.preventDefault();showMenu();} });
+})();
 
 // ── Pair work screen ──────────────────────────────────────────────────────────
 function goToPairWork(q) {
@@ -371,7 +344,6 @@ function goToPairWork(q) {
   document.getElementById('menu-screen').classList.add('hidden');
   document.getElementById('pw-q-badge').textContent = `Question ${q.id}`;
 
-  // Render pair work questions
   const container = document.getElementById('pw-questions');
   container.innerHTML = '';
   q.pairwork.forEach((pq, i) => {
@@ -381,7 +353,6 @@ function goToPairWork(q) {
     container.appendChild(el);
   });
 
-  // Reset timer
   clearInterval(pwTimerInterval); pwTimerInterval = null;
   pwSecondsLeft = 180;
   document.getElementById('pw-timer').textContent = fmt(pwSecondsLeft);
@@ -435,7 +406,6 @@ function startWriting() {
   updateWordCount();
   document.getElementById('essay-error').style.display = 'none';
 
-  // Start 12-min essay timer
   clearInterval(essayTimerInterval);
   essaySecondsLeft = 720;
   const badge = document.getElementById('essay-timer-badge');
@@ -450,7 +420,7 @@ function startWriting() {
     if (essaySecondsLeft <= 0) {
       clearInterval(essayTimerInterval);
       badge.textContent = 'Time Up!';
-      submitEssay(); // auto-submit
+      submitEssay();
     }
   }, 1000);
 
@@ -478,7 +448,7 @@ function updateWordCount() {
 // ── Paste & typing tracking ───────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const ta = document.getElementById('essay-input');
-  ta.addEventListener('keypress', e => { typedChars++; });
+  ta.addEventListener('keypress', () => { typedChars++; });
   ta.addEventListener('paste', e => {
     setTimeout(() => {
       const pasted = e.clipboardData ? e.clipboardData.getData('text').length : 200;
@@ -490,14 +460,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function isPasteSuspicious(essay) {
   const total = typedChars + pastedChars;
   if (total === 0) return false;
-  // Flag if more than 55% of content came from paste
   return pastedChars > 0 && (pastedChars / Math.max(essay.length, 1)) > 0.55;
 }
 
 function goBackFromAI() {
   document.getElementById('ai-screen').classList.add('hidden');
   document.getElementById('exam-screen').classList.remove('hidden');
-  // Reset essay
   document.getElementById('essay-input').value = '';
   typedChars = 0; pastedChars = 0;
   updateWordCount();
@@ -515,13 +483,11 @@ async function submitEssay() {
   document.getElementById('exam-screen').classList.add('hidden');
   document.getElementById('loading-screen').classList.remove('hidden');
 
-  // Step 1: Behavioural paste check
   if (isPasteSuspicious(essay)) {
     showAIDetected("⚠️ Large paste detected: most of this essay was pasted rather than typed. Please write your own essay without copying from AI tools.");
     return;
   }
 
-  // Step 2: AI content detection via DeepSeek
   try {
     document.getElementById('loading-step').textContent = 'Checking originality…';
     const aiCheck = await detectAI(essay);
@@ -529,7 +495,6 @@ async function submitEssay() {
       showAIDetected(aiCheck.reason);
       return;
     }
-    // Step 3: Score
     document.getElementById('loading-step').textContent = 'Sending to AI examiner…';
     const result = await scoreEssay(currentQ, essay, wc);
     showResults(result, essay);
@@ -579,31 +544,60 @@ Reply ONLY in this exact JSON (no markdown):
   const m = text.match(/\{[\s\S]*\}/);
   if (!m) return { isAI: false, reason: '' };
   const p = JSON.parse(m[0]);
-  // Only block on high confidence AI detection
   return { isAI: p.isAI === true && p.confidence === 'high', reason: p.reason || '' };
 }
 
 // ── Score ─────────────────────────────────────────────────────────────────────
 async function scoreEssay(q, essay, wc) {
-  // Keep prompt concise to avoid payload issues
-  const prompt = `You are an English examiner. Mark this upper-intermediate essay.
+  const prompt = `You are a supportive English examiner marking an upper-intermediate student essay. Be GENEROUS and ENCOURAGING — reward effort and communication, not perfection.
 
 TOPIC: "${q.statement}"
 STUDENT ESSAY (${wc} words): "${essay}"
 
-Score each criterion 0-3 (total /15):
-1. TASK ACHIEVEMENT: 3=clear agree/disagree+strong reasons+example/suggestion. 2=position stated,weak reasons. 1=unclear position. 0=off-topic.
-2. GRAMMAR: 3=minor errors only. 2=some errors,meaning clear. 1=frequent errors. 0=severe errors.
-3. VOCABULARY: 3=good range,correct use. 2=adequate,some errors. 1=limited range. 0=very poor.
-4. ORGANIZATION: 3=clear intro/body/conclusion+linkers. 2=some structure. 1=poor organization. 0=none.
-5. WORD COUNT: 3=100+words. 2=80-99. 1=60-79. 0=under 60. (this essay: ${wc} words)
+Score each criterion 0–3. Default to 3 unless there is a CLEAR, SPECIFIC reason to go lower:
 
-Give specific feedback referencing the student's actual words. For grammar list errors as: wrong → correct.
+1. TASK ACHIEVEMENT /3
+   3 = Student addresses the topic and gives a position (even if simple or brief)
+   2 = Position is present but vague, or reasons are very thin
+   1 = Barely addresses the topic
+   0 = Completely off-topic
+
+2. GRAMMAR /3
+   3 = Communicates clearly; occasional errors are fine and expected
+   2 = Errors are frequent but meaning is still understandable
+   1 = Errors make comprehension difficult
+   0 = Incomprehensible
+
+3. VOCABULARY /3
+   3 = Uses a reasonable range of words for the topic; some errors are fine
+   2 = Limited vocabulary but adequate for basic communication
+   1 = Very limited; mostly basic words with many errors
+   0 = Almost no relevant vocabulary
+
+4. ORGANIZATION /3
+   3 = Has some structure (intro, body, conclusion — even rough); uses some linking words
+   2 = Some organization visible but inconsistent
+   1 = Very little structure
+   0 = No organization at all
+
+5. WORD COUNT /3
+   3 = 100+ words
+   2 = 80–99 words
+   1 = 60–79 words
+   0 = Under 60 words
+   (this essay: ${wc} words — apply this mechanically)
+
+IMPORTANT GRADING PHILOSOPHY:
+- Upper-intermediate students WILL make grammar mistakes — that is normal and expected
+- A student who communicates their opinion clearly with some errors deserves 2–3, not 0–1
+- Only give 0 or 1 when communication genuinely breaks down
+- Be specific in feedback: quote the student's actual words, praise what works, then suggest one or two improvements
+- For grammar feedback, use format: "wrong phrase" → "better version"
+- Keep feedback encouraging and constructive
 
 Reply ONLY in this exact JSON (no markdown):
 {"task":0,"grammar":0,"vocab":0,"org":0,"wc":0,"fb_task":"...","fb_grammar":"...","fb_vocab":"...","fb_org":"...","fb_overall":"..."}`;
 
-  // Retry logic — try up to 3 times
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
@@ -625,14 +619,11 @@ Reply ONLY in this exact JSON (no markdown):
       });
 
       if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       if (!data.choices || !data.choices[0]) throw new Error('Unexpected response format');
 
       let text = data.choices[0].message.content.trim().replace(/```json|```/g,'').trim();
-
-      // Extract JSON if wrapped in extra text
       const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (!jsonMatch) throw new Error('Could not parse AI response');
       const p = JSON.parse(jsonMatch[0]);
@@ -651,7 +642,7 @@ Reply ONLY in this exact JSON (no markdown):
       };
     } catch(e) {
       lastError = e;
-      if (attempt < 3) await new Promise(r => setTimeout(r, 2000)); // wait 2s before retry
+      if (attempt < 3) await new Promise(r => setTimeout(r, 2000));
     }
   }
   throw new Error(lastError.message || 'Failed to connect. Check your internet and try again.');
@@ -665,7 +656,6 @@ function showResults(r, essay) {
   document.getElementById('result-screen').classList.remove('hidden');
   document.getElementById('result-total').textContent = total;
   document.getElementById('result-total').style.color = color;
-  document.getElementById('result-name').textContent  = userName;
   document.getElementById('result-topic').textContent = currentQ.statement;
   document.getElementById('cr-task').textContent    = `${r.task}/3`;
   document.getElementById('cr-grammar').textContent = `${r.grammar}/3`;
